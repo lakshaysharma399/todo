@@ -13,16 +13,31 @@ function App() {
 
   }
 
+  function deletetodo(index){
+   const updatedarray =  todos.filter((_, i) =>{
+
+    return  i !== index;
+
+    })
+
+    setTodos([...updatedarray]);
+
+  }
+
   return (
     <>
 
     <input type="text" value={todo} onChange={(e) => setTodo(e.target.value)} />
     <button onClick={addtodo}>ADD</button>
+    
 
     <ul>
-      {todos.map((value) => 
+      {todos.map((value, index) => 
 
-      <li>{value}</li>
+      <li key={index}>{value}
+      <button onClick={() => deletetodo(index)}>Delete</button>
+      
+      </li>
       
       )}
       
